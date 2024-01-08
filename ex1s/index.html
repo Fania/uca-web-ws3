@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JS Quiz</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  
+  <form id="quiz">
+
+    <fieldset>
+      <legend>Quiz question one?</legend>
+      <label for="q1a1">Correct answer</label>
+      <input type="radio" name="q1answers" id="q1a1" value="1">
+      <br>
+      <label for="q1a2">Wrong answer</label>
+      <input type="radio" name="q1answers" id="q1a2" value="0">
+      <br>
+      <label for="q1a3">Incorrect answer</label>
+      <input type="radio" name="q1answers" id="q1a3" value="0">
+    </fieldset>
+
+    <fieldset>
+      <legend>Quiz question two?</legend>
+      <label for="q2a1">Wrong</label>
+      <input type="radio" name="q2answers" id="q2a1" value="0">
+      <br>
+      <label for="q2a2">Yes!</label>
+      <input type="radio" name="q2answers" id="q2a2" value="1">
+      <br>
+      <label for="q2a3">Don't Pick me</label>
+      <input type="radio" name="q2answers" id="q2a3" value="0">
+    </fieldset>
+
+    <button type="submit">Submit</button>
+  </form>
+
+  <output>Score: <span id="result">0</span>/<span id="total">X</span></output>
+
+  <script src="js/scripts.js"></script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+body { 
+  height: 90vh; 
+  color: white; 
+  background: red; 
+  display: flex; 
+  justify-content: center; 
+  align-items: center;
+  flex-direction: column;
+  gap: 4em;
+}
+span[id^="heart"] {
+  padding: 10px; 
+  font-size: 3em; 
+  cursor: pointer; 
+  display: inline-block; 
+  transform: rotate(-90deg);
+  color: white; 
+}
+span[id^="heart"].liked,
+span[id^="heart"]:hover,
+span[id^="heart"].liked:hover { 
+  color: black; 
+  background: yellow; 
+  border-radius: 50%;
+}
+[id^="star"] {
+  cursor: pointer; 
+}
+[id^="star"] path { 
+  fill: red; 
+  stroke: white;
+}
+[id^="star"].liked path { 
+  fill: white; 
+  stroke: white;
+}
+[id^="star"]:hover path,
+[id^="star"].liked:hover path { 
+  fill: yellow; 
+  stroke: white;
+}

@@ -1,0 +1,73 @@
+body { 
+  margin: 0; 
+  color: #131515;
+}
+header {
+  color: #FFFAFB; 
+  background: #2B2C28;
+  display: flex;
+  align-items: center; 
+  justify-content: space-between;
+  padding: 20px;
+}
+header svg {
+  width: 100px; 
+  height: 100px;
+  fill: #7DE2D1; 
+  margin-right: 10px;
+}
+header div { 
+  display: flex; 
+  align-items: center;
+}
+nav a { 
+  color: #FFFAFB; 
+  padding: 0 .5em; 
+  text-decoration: none;
+}
+a:hover { 
+  color: #7DE2D1;
+}
+.welcomey {
+  background: darkblue;
+}
+.banner a,
+.banner span {
+  color: white;
+  font-size: 3em;
+  display: flex;
+  justify-content: center; 
+  align-items: center;
+  height: 300px;
+}
+
+.clicky {
+  background-color: #2B2C28;
+}
+.clicky a { 
+  color: #FFFAFB; 
+  text-decoration: none;
+  background: rgba(74, 21, 75, .4);
+}
+.clicky a:hover { 
+  color: #7DE2D1;
+}
+main { 
+  color: #FFFAFB; 
+  background: #339989;
+}
+section { 
+  padding: 1em 2em; 
+  max-width: 800px; 
+  margin: 0 auto;
+}
+footer { 
+  color: #FFFAFB; 
+  background: #131515; 
+  padding: 1em;
+}
+footer p { 
+  margin: 0; 
+  padding: 1em; 
+  text-align: center;
+}
