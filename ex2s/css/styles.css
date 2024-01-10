@@ -14,6 +14,7 @@ header svg {
 }
 header div { display: flex; align-items: center }
 nav a { color: #FFFAFB; padding: 0 .5em; text-decoration: none }
+section h2 { scroll-margin-top: 180px; }
 a:hover { color: #7DE2D1 }
 .welcomey {
  background-image: url('https://images.unsplash.com/photo-1534331106638-ed6dd4d1d309?ixlib=rb-1.2.1&q=85&fm=jpg&crop=entropy&cs=srgb&ixid=eyJhcHBfaWQiOjE0NTg5fQ');

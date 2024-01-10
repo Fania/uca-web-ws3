@@ -202,6 +202,7 @@ Then we want to create internal links so that when we click on these links they 
 Now you can click on the internal link, and it jumps to the relevant header immediately. However we would like it to *scroll there like smooth butter jazz*!
 
 - [ ] simply add `html { scroll-behavior: smooth; }`
+- [ ] and also `section h2 { scroll-margin-top: 180px; }` so that the sections we scroll to fit properly and don't disappear behind the header.
 
 Another thing we can do here is to make sure the logo links back to the "home" page (i.e. clears the url from any hashes we might have added, so that when we reload the page doesn't keep scrolling down to some random heading!)
 
