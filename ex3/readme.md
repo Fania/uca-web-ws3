@@ -1,6 +1,6 @@
 # Web Design & Development
 
-## Workshop 3 - Exercise 3: LocalStorage Hearts
+## Workshop 3 - Exercise 3: LocalStorage Stars
 
 In this workshop you are going to be introduced to the **browser local storage** and how to access it with JavaScript.
 
@@ -54,18 +54,89 @@ Because we are now trying to target multiple elements with the same `id` it's a 
 }
 ```
 
+At this point we can click on stars and they will change colour to white and when hovered over they will go yellow.
+
+---
+
 Now for the JavaScript:
 
-- [ ] you can probably guess that we will need a variable that holds our stars elements: `const stars = document.querySelectorAll('[id^="star"]');` so that we can loop through them
-- [ ] we will then create a function called `handleLikes` that takes a parameter called 'elements' as input like this:
+Let's think about what we need to do first. We need to handle the clicks on the stars, so we need some sort of `eventListener` that changes the colour of the stars accordingly. We also want to put the state of each star when clicked into `localStorage` so that when we reload the page it remembers which stars we have *liked* and which not. 
+
+We want short utility functions that are easy to understand and do simple things.
+
+- [ ] Let's start with a variable that holds our stars elements: `const stars = document.querySelectorAll('[id^="star"]');` so that we can loop through them
+
+- [ ] then we can loop through these stars and attach `eventListener`s to each:
 
 ```js
-function handleLikes(elements) {
-  ...
+stars.map(star => 
+  star.addEventListener('click', () => {
+    toggleClass(star);
+    setState(star);
+  })
+);
+```
+
+Inside of the `eventListener` we are calling two functions called `toggleClass(star);` and `setState(star);` which we need to define next.
+
+- [ ] This **toggleClass** function basically simply takes a *star* `element` as input parameter and then *toggles* the "liked" `class` on that `element`.
+
+```js
+function toggleClass(elem) {
+  elem.classList.toggle("liked");
 }
 ```
 
-- [ ] and then immediately after (or before, it doesn't matter, JS is asynchronous!) we call the function with the `stars` variable: `handleLikes(stars);`
+- [ ] The **setState** function also takes a *star* `element` as input and then checks if the `element` already has been "liked" (i.e. if it already has a "liked" `class` on it), if so then it sets the `localStorage` to `true`, if not then it sets it to `false`:
 
-Inside the function we will have to do a few things:
+```js
+function setState(elem) { 
+  [...elem.classList].includes("liked") ? 
+    localStorage.setItem(elem.id, true):
+    localStorage.setItem(elem.id, false);
+}
+```
 
+We are now able to see in the `localStorage`
+how the values change correctly when clicked on stars - **but the styles to not match when we reload the page yet!!** So we need to write a function to *load from localStorage*!
+
+---
+
+- [ ] create a `loadFromStorage()` function, and in it loop over `stars` again with a `map` function as we did above for the `eventListener`s to call a `setClass` function (and call this function immediately after):
+
+```js
+function loadFromStorage() {
+  stars.map(star => {
+    setClass(star, getState(star));
+  })
+}
+loadFromStorage();
+```
+
+We then need to declare two functions: 
+
+- [ ] setClass (which takes a *star* `element` and a *state* and then depending on if the *state* is `true` will add a `class` "liked" or remove it):
+
+```js
+function setClass (elem, state) {
+  if (state === "true") {
+    elem.classList.add("liked");
+  } else {
+    elem.classList.remove("liked");
+  }
+}
+```
+
+- [ ] getState (which takes a *star* `element` and returns the *state* retrieved from the `localStorage`):
+
+```js
+function getState(elem) {
+  let stateStored = localStorage.getItem(elem.id);
+  if (stateStored !== null && stateStored) {
+    setClass(elem, stateStored);
+    return stateStored;
+  }
+}
+```
+
+Now, finally, altogether, we can reload the page and it will display our star ratings correctly with the states we have saved in the `localStorage` of the browser. We can update the ratings as we liked, and it will simply update the `localStorage`.

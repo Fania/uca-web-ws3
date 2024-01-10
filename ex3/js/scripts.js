@@ -1,38 +1,23 @@
 'use strict';
 
-const stars = document.querySelectorAll('[id^="star"]');
-console.log(stars);
+// get stars from DOM
 
-handleLikes(stars);
+// add eventListener to all stars
+// TODO
 
+// toggle class for element
+// TODO
 
-function handleLikes(elements) {
+// update localStorage for element
+// TODO
 
-  elements.forEach( elem => {
-    // console.log('current id:',heart.id);
+// return state for element
+// TODO
 
-    let liked = localStorage.getItem(elem.id);
-    // first load
-    if ( liked === null ) {
-      console.log('nothing in storage yet');
-      localStorage.setItem(elem.id, 'false');
-    } else {
-      console.log('already in storage');
-      if (liked === 'true') elem.classList.add('liked');
-    }
-    elem.addEventListener('click', () => {
-      // get up-to-date value for each click
-      let liked = localStorage.getItem(elem.id);
-      if ( liked === 'true' ) {
-        console.log('unliking',elem.id);
-        elem.classList.remove('liked');
-        localStorage.setItem(elem.id, 'false');
-      } else {
-        console.log('liking',elem.id);
-        elem.classList.add('liked');
-        localStorage.setItem(elem.id, 'true');
-      }
-    });
-  });
+// set class for element based on state
+// TODO
 
-}
+// load from localStorage and apply classes to stars
+// TODO
+
+// run loadFromStorage() function when page first loads

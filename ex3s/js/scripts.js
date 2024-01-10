@@ -5,29 +5,17 @@ const [...stars] = document.querySelectorAll('[id^="star"]');
 
 // add eventListener to all stars
 stars.map(star => 
-  star.addEventListener('click', (ev) => {
-    captureClick(star);
+  star.addEventListener('click', () => {
+    toggleClass(star);
+    setState(star);
   })
 );
 
-// pass element on to set class and localStorage
-function captureClick(elem) {
-  toggleClass(elem);
-  setState(elem);
-}
-
-function setClass (elem, state) {
-  if (state === "true") {
-    elem.classList.add("liked");
-  }
-  if (state === "false") {
-    elem.classList.remove("liked");
-  }
-}
-
+// toggle class for element
 function toggleClass(elem) {
   elem.classList.toggle("liked");
 }
+
 // update localStorage for element
 function setState(elem) { 
   [...elem.classList].includes("liked") ? 
@@ -35,22 +23,30 @@ function setState(elem) {
     localStorage.setItem(elem.id, false);
 }
 
+// set class for element based on state
+function setClass (elem, state) {
+  if (state === "true") {
+    elem.classList.add("liked");
+  } else {
+    elem.classList.remove("liked");
+  }
+}
+
+// return state for element
 function getState(elem) {
   let stateStored = localStorage.getItem(elem.id);
   if (stateStored !== null && stateStored) {
-    console.log(`getting state bool ${elem.id}`, stateStored);
     setClass(elem, stateStored);
     return stateStored;
   }
 }
 
+// load from localStorage and apply classes to stars
 function loadFromStorage() {
-  let starState;
-  
   stars.map(star => {
-    starState = getState(star);
-    setClass(star, starState);
+    setClass(star, getState(star));
   })
 }
 
-document.addEventListener('DOMContentLoaded', loadFromStorage);
+// run loadFromStorage() function when page first loads
+loadFromStorage();
